@@ -24,7 +24,7 @@ while True:
 		while True:
 			sql_cursor.execute("SELECT * FROM Room_Details")
 			data=sql_cursor.fetchall()
-
+			print(data)
 			a=(data[0])[1]
 			b=(data[1])[1]
 			c=(data[2])[1]

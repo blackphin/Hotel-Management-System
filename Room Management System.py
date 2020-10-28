@@ -38,7 +38,7 @@ def system():
 		price_all=sql_cursor.fetchall()
 		while True:
 			room_type=str(input("Select the type of Room Needed: "))
-			room_type.lower()
+			room_type=room_type.lower()
 			if room_type=="economy":
 				room_type="Economy"
 				price=(price_all[0])[0]

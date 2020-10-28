@@ -1,4 +1,3 @@
-print("")
 print("Welcome to Room Booking System".center(130))
 import mysql.connector
 sql_connector=mysql.connector.connect(host="localhost",user="root",passwd="admin",database="mysql")

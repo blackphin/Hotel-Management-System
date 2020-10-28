@@ -136,7 +136,7 @@ def system():
 								print("Only 3 Persons per Room are allowed")
 						break
 					else:
-						print("Only",available,"Rooms are available in",room_type)
+						print("Only",available,"Room/Rooms are available in",room_type)
 				break
 			elif confirm=="n":
 				print("The Booking has been Canceled")

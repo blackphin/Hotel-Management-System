@@ -220,5 +220,7 @@ while True:
 				continue
 
 		break
+	elif user=="admin":
+		print("Wrong Password".center(130))
 	else:
 		print("Wrong ID/Password".center(130))

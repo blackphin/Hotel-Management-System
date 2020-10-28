@@ -1,17 +1,17 @@
 print("")
-print("Welcome to Room Management System".center(130))
+print("Welcome to Room Booking System".center(130))
 import mysql.connector
 sql_connector=mysql.connector.connect(host="localhost",user="root",passwd="admin",database="mysql")
 sql_cursor=sql_connector.cursor()
 def system():
-	invoice_f=open(r"D:\Invoice Number.log", "r")
+	invoice_f=open(r"D:\Hotel\Invoice Number.log", "r")
 	invoice_l=invoice_f.readlines()
 	if len(invoice_l)==0:
 		invoice_f.close()
-		invoice_f=open(r"D:\Invoice Number.log", "w")
+		invoice_f=open(r"D:\Hotel\Invoice Number.log", "w")
 		invoice_f.write("1000")
 		invoice_f.close()
-	invoice_f=open(r"D:\Invoice Number.log", "r")
+	invoice_f=open(r"D:\Hotel\Invoice Number.log", "r")
 	invoice_l=invoice_f.readlines()
 	invoice_no=int(invoice_l[0])
 	invoice_f.close()
@@ -91,7 +91,7 @@ def system():
 								print("")
 								print("Booking has been created".center(130))
 								invoice_no+=1
-								invoice_f=open(r"D:\Invoice Number.log", "w")
+								invoice_f=open(r"D:\Hotel\Invoice Number.log", "w")
 								invoice_f.write(str(invoice_no))
 								invoice_f.close()
 								invoice_list=[]
@@ -125,7 +125,8 @@ def system():
 								invoice_list.append(""+'\n')
 								invoice_list.append("Total Amount Paid: ")
 								invoice_list.append(str(price*quantity))
-								file=open("D:\\Invoice.txt", 'w')
+								new=str(invoice_no)
+								file=open(r"D:\Hotel\invoice_"+new+"_"+name+".txt", "w")
 								file.writelines(invoice_list)
 								file.close()
 								delete="UPDATE Room_Details SET Rooms_Available="+str(available-quantity)+" WHERE Rooms_Available="+str(available)

@@ -86,7 +86,7 @@ def system():
 							if guests<=(quantity*3):
 								nights=int(input("Number of Nights: "))
 								print("")
-								print("Total amount to be paid:",(price*quantity))
+								print("Total amount to be paid:",(price*quantity*nights))
 								print("")
 								print("Booking has been created".center(130))
 								invoice_no+=1
@@ -123,7 +123,7 @@ def system():
 								invoice_list.append(""+'\n')
 								invoice_list.append(""+'\n')
 								invoice_list.append("Total Amount Paid: ")
-								invoice_list.append(str(price*quantity))
+								invoice_list.append(str(price*quantity*nights))
 								new=str(invoice_no)
 								file=open(r"D:\Hotel\invoice_"+new+"_"+name+".txt", "w")
 								file.writelines(invoice_list)

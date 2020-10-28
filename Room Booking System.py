@@ -213,7 +213,6 @@ while True:
 				break
 			elif menu==4 and cont==1:
 				sql_cursor.execute("DROP DATABASE Hotel")
-				# sql_cursor.execute("CREATE DATABASE Hotel")
 				continue
 			else:
 				print("Invalid Input")

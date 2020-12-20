@@ -66,9 +66,8 @@ def system():
 		print("")
 		while True:
 			confirm=str(input("Do you want to proceed with the booking (Y/N): "))
-			confirm.lower()
 			print("")
-			if confirm=="y":
+			if confirm.lower()=="y":
 				print("Customer Details".center(130))
 				name=str(input("Full Name: "))
 				email=str(input("Email: "))
@@ -128,7 +127,10 @@ def system():
 								file=open(r"D:\Hotel\invoice_"+new+"_"+name+".txt", "w")
 								file.writelines(invoice_list)
 								file.close()
-								delete="UPDATE Room_Details SET Rooms_Available="+str(available-quantity)+" WHERE Rooms_Available="+str(available)
+								delete="UPDATE Room_Details SET Rooms_Available="+\
+								str(available-quantity)+\
+								" WHERE Rooms_Available="+\
+								str(available)
 								sql_cursor.execute(delete)
 								sql_connector.commit()
 								break
@@ -138,7 +140,7 @@ def system():
 					else:
 						print("Only",available,"Room/Rooms are available in",room_type)
 				break
-			elif confirm=="n":
+			elif confirm.lower()=="n":
 				print("The Booking has been Canceled")
 				break
 			else:
@@ -177,7 +179,8 @@ while True:
 				sql_cursor.execute("DROP DATABASE Hotel")
 				sql_cursor.execute("CREATE DATABASE Hotel")
 				sql_cursor.execute("USE Hotel")
-				sql_cursor.execute("CREATE TABLE Room_Details (Room_Type CHAR(20), Rooms_Available INT, Price INT)")
+				sql_cursor.execute('CREATE TABLE Room_Details (Room_Type CHAR(20), '
+					'Rooms_Available INT, Price INT)')
 				sql=("INSERT INTO Room_Details VALUES (%s, %s, %s)")
 				val=[
 				("Economy",40, 1000),
@@ -189,14 +192,14 @@ while True:
 				sql_connector.commit()
 				print("")
 				print("Default Database Created")
-				system()
-				break
+				continue
 			elif menu==2:
 				val=[]
 				sql_cursor.execute("DROP DATABASE Hotel")
 				sql_cursor.execute("CREATE DATABASE Hotel")
 				sql_cursor.execute("USE Hotel")
-				sql_cursor.execute("CREATE TABLE Room_Details (Room_Type CHAR(20), Rooms_Available INT, Price INT)")
+				sql_cursor.execute('CREATE TABLE Room_Details (Room_Type CHAR(20), '
+					'Rooms_Available INT, Price INT)')
 				for x in ["Economy","Deluxe","Super Deluxe","Premium Suite"]:
 					r_q=int(input("Enter Number of "+x+" Rooms Available: "))
 					r_p=int(input("Enter Price of "+x+" Room: "))
@@ -206,8 +209,7 @@ while True:
 				sql_connector.commit()
 				print("")
 				print("New Database Created")
-				system()
-				break
+				continue
 			elif menu==3 and cont==1:
 				system()
 				break
